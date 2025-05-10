@@ -1,6 +1,6 @@
 
 const express = require('express');
-const { searchDocuments, getRecentDocuments } = require('../controllers/searchController');
+const { searchDocuments, getRecentDocuments } = require('../controllers/searchControllers');
 const { isAuthenticated } = require('../middleware/isAuthenticated');
 
 const router = express.Router();

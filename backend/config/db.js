@@ -1,3 +1,5 @@
+const config = require('../config'); 
+
 const mongoose = require('mongoose');
 
 // Function to connect to MongoDB
@@ -28,5 +30,6 @@ const connectDB = async () => {
     process.exit(1);
   }
 };
+
 
 module.exports = connectDB;

@@ -140,7 +140,7 @@ const deleteDocument = async (req, res, next) => {
       throw new Error('Only the document owner can delete it');
     }
     
-    await document.remove();
+    await document.deleteOne();
     
     res.status(200).json({ message: 'Document removed' });
   } catch (error) {

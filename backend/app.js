@@ -18,6 +18,7 @@ const { errorHandler } = require('./middleware/errorHandler');
 // Import routes
 const authRoutes = require('./routes/authRoutes');
 const documentRoutes = require('./routes/documentRoutes');
+const searchRoutes = require('./routes/searchRoutes');
 
 const app = express();
 
@@ -53,16 +54,17 @@ app.use(express.urlencoded({ extended: false }));
 
 
 
-app.use(mongoSanitize());
+// // app.use(mongoSanitize());
 
-// Data sanitization against XSS
-app.use(xss());
 
-// Prevent parameter pollution
-app.use(hpp());
+// // Data sanitization against XSS
+// app.use(xss());
 
-// Compression middleware to reduce response size
-app.use(compression());
+// // Prevent parameter pollution
+// app.use(hpp());
+
+// // Compression middleware to reduce response size
+// app.use(compression());
 
 
 
