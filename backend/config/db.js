@@ -14,10 +14,18 @@ const connectDB = async () => {
 
     // Log a success message if the connection is established
     console.log(`MongoDB Connected: ${conn.connection.host}`);
+
+
+        if (config.nodeEnv === 'production') {
+      console.log('Setting up database indexes for production...');
+      // These will be created if they don't exist
+      await mongoose.connection.db.collection('documents').createIndex({ owner: 1 });
+      await mongoose.connection.db.collection('documents').createIndex({ 'collaborators.user': 1 });
+      await mongoose.connection.db.collection('documents').createIndex({ title: 'text', content: 'text' });
+    }
   } catch (error) {
-    // Log an error message and exit the process if the connection fails
     console.error(`Error connecting to MongoDB: ${error.message}`);
-    process.exit(1); // Exit process with failure
+    process.exit(1);
   }
 };
 
